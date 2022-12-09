@@ -8,16 +8,23 @@ decimal juros = Convert.ToDecimal(Console.ReadLine())/100;
 decimal saldoDevedor = principal;
 decimal amortizacao = principal / parcelas;
 int periodo = 0;
-while (periodo < parcelas)
+decimal valorJuros, prestacao, valorPago;
+
+ 
+while (periodo <= parcelas)
 {
-    if(periodo == 0)
-    {
-        System.Console.WriteLine($"{periodo,-2:N0} | {amortizacao,-15:C} | {valorJuros,-15:C} | {prestacao,-15:C} | {valorPago,-15:C} | {saldoDevedor,-15:C} |");
-    }
-    decimal valorJuros = saldoDevedor * juros;
-    decimal prestacao = amortizacao + valorJuros;
-    decimal valorPago = saldoDevedor - amortizacao;
-    saldoDevedor = saldoDevedor - amortizacao;
-    System.Console.WriteLine($"{periodo,-2:N0} | {valorJuros,-15:C} | {saldoDevedor,-15:C} | {amortizacao,-15:C} | {prestacao,-15:C} | {valorPago,-15:C} |");
-    periodo++;
+   if(periodo == 0)
+        {
+        System.Console.WriteLine($"{periodo,-2:N0} | {"",-15} | {"",-15} | {"",-15} | {"",-15} | {saldoDevedor,-15:C} |");
+        periodo++;
+        }          
+    else
+        {
+        valorJuros = saldoDevedor * juros;
+        prestacao = amortizacao + valorJuros;
+        valorPago = saldoDevedor - amortizacao;
+        saldoDevedor = saldoDevedor - amortizacao;
+        System.Console.WriteLine($"{periodo,-2:N0} | {valorJuros,-15:C} | {saldoDevedor,-15:C} | {amortizacao,-15:C} | {prestacao,-15:C} | {valorPago,-15:C} |");
+        periodo++;
+        }
 }
